@@ -15,18 +15,17 @@ import Background09 from './Design/Background09';
 import Background10 from './Design/Background10';
 import Background11 from './Design/Background11';
 import Background12 from './Design/Background12';
+import Cv from './Design/Cv';
 import React, {useEffect, useState} from 'react';
 
 function App(){
   const [parkour, setParkour] = useState(0);
+  const [winsize, setWinsize] = useState([window.innerWidth, window.innerHeight])
   const moving = React.useRef(parkour);
 
   const handleKeyDown = event =>{
-    console.log("wsh alors");
-    console.log(event.keyCode);
     switch(event.keyCode ) {
       case 39:
-          console.log(parkour);
           setParkour(parkour + 1);
           break;
       case 37:
@@ -37,50 +36,19 @@ function App(){
           break;
     }
   };
-  // useEffect(() => {
-  //   console.log("wsh alors");
-  //   const handleKeyDown = event =>{
-  //     switch(event.keyCode ) {
-  //       case 39:
-  //           console.log(moving.current);
-  //           setParkour(moving.current + 1);
-  //           break;
-  //       default: 
-  //           break;
-  //     }
-  //   };
+  useEffect(() => {
+    function handleResize() {
+      setWinsize([window.innerWidth, window.innerHeight]);
+    }
 
-  //   window.addEventListener('keydown', handleKeyDown);
-  //   return () => {
-  //     window.removeEventListener('keydown', handleKeyDown);
-  //     // clearInterval(interval);
-  //   }
-  // }, []);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className="App" >
       <div className="Wrapper" tabIndex="0" onKeyDown={handleKeyDown}>
-        
-        {(parkour >= 0 && parkour < 280) && <Background08 move={parkour}></Background08>}
-        {/* {(parkour >= 0 && parkour < 100) && <Background11></Background11>} */}
-        
-        {(parkour >= 0 && parkour < 280) && <Background05 move={parkour}></Background05>}
-        {(parkour > 0 && parkour < 400) && <Background04 move={parkour}></Background04>}
-
-        {parkour > 1000 && <Background00></Background00>}
-        {parkour > 1000 && <Background01></Background01>}
-        {parkour > 1000 && <Background02></Background02>}
-        {parkour > 1000 && <Background03></Background03>}
-
-        {parkour > 1000 && <Background06></Background06>}
-        {parkour > 1000 && <Background07></Background07>}
-
-        {/* <Background09></Background09> */}
-        {/* <Background10></Background10> */}
-        {/* <Background11></Background11> */}
-        {/* {parkour > 10 && <Background12></Background12>} */}
-        <Ground></Ground>
-        <Character></Character>
+        <Cv move={parkour * 3} winsize={winsize} ></Cv>
       </div>
     </div>
   );

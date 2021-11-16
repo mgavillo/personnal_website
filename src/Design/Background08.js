@@ -22,6 +22,7 @@ const Background08 = (props) => {
         <path
           className="prefix__cls-3"
           d="M11.97.67h21.95v6.65H11.97zM53.22 0h21.95v6.65H53.22z"
+          transform={`translate(${-props.move * 1.5}, 530)`}
         />
       </g>
     </svg>
