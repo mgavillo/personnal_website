@@ -48,7 +48,7 @@ function App(){
   return (
     <div className="App" >
       <div className="Wrapper" tabIndex="0" onKeyDown={handleKeyDown}>
-        <Cv move={parkour * 3} winsize={winsize} ></Cv>
+        <Cv move={parkour * 10} winsize={winsize} ></Cv>
       </div>
     </div>
   );
