@@ -3,12 +3,16 @@ import * as React from "react"
 function Gate(props) {
   return (
     <svg
-      className = "Game"
-      data-name="Layer 1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 102.35 447.21"
-      {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    viewBox={`37 2513.74 1368 800`}
+    // viewBox={`${36 + (1368 - props.winsize[0])/2} 2513.74 ${1368 - (1368 - props.winsize[0])} 835`}
+    // viewBox={`${36 + (1368 - (835 * props.winsize[0] / props.winsize[1]))/2} 2513.74 ${835 * props.winsize[0] / props.winsize[1]} 835`}
+    preserveAspectRatio="xMidYMid slice"
+    // style="position:absolute; top:0; left:0; z-index:100"
+    // preserveAspectRatio="xMinYMin meet"
+    {...props}
+    style={{height: "100vh", width: "100%"}}
     >
       <defs>
         <linearGradient

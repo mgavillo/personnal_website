@@ -1,0 +1,67 @@
+#headerWrapper{
+    color: white;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height:70px;
+}
+
+#headerWrapper[nightShift='1']{
+    animation-duration: 1s;
+    animation-name: nightShift;
+    animation-iteration-count: forwards;
+}
+
+
+.aller {
+    animation-direction: normal;
+  }
+
+.retour {
+    animation-direction: reverse;
+  }
+
+@keyframes nightShift {
+    from {
+      background-color: midnightblue;
+      color: white;
+    }
+    to{
+        background-color: lightblue;
+        color: midnightblue;
+    }
+  }
+
+
+
+#headerContent{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.headerText {
+    margin: 20px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+/* .headerText:hover{
+    color: mediumturquoise;
+    cursor: pointer;
+} */
+
+#nightSwitch {
+    width: 100px;
+    height: auto;
+}
+
+#nightSwitch:hover{
+    cursor: pointer;
+}

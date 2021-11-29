@@ -1,3 +1,14 @@
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+a:hover {
+  color: mediumturquoise;
+  cursor: pointer;
+}
+
+
 .App {
   text-align: center;
   padding: 0;
@@ -43,7 +54,7 @@
   margin:0;
   border:0;
   width: 100vw;
-  height:100vh;
+  height: calc(100vh - 70px);
   display: flex;
   /* justify-content: center;
   align-items: center; */
