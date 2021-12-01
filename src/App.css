@@ -72,3 +72,7 @@ a:hover {
 .character{
   left: 50vw;
 }
+
+#canvas3d {
+  background-color:navy;
+}

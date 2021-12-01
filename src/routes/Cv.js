@@ -26,10 +26,9 @@ const Cv = (props) => {
     }
   };
 
-  const handleKeyDown = event =>{
+  const handleKeyDown = event => {
     switch(event.keyCode ) {
       case 39:
-          console.log(move);
           setmove(move + 3);
           setMoving(true);        
           break;
@@ -43,12 +42,12 @@ const Cv = (props) => {
     }
   };
 
-  // if(groundAnim){
-  //   moving === true ? groundAnim.play() : groundAnim.pause();
-  // }
-  // if (charAnim){
-  //   moving === true ? charAnim.play() : charAnim.pause();
-  // }
+  if(groundAnim){
+    moving === true ? groundAnim.play() : groundAnim.pause();
+  }
+  if (charAnim){
+    moving === true ? charAnim.play() : charAnim.pause();
+  }
   
   React.useEffect(() => {
     groundAnim = lottie.loadAnimation({
@@ -65,6 +64,7 @@ const Cv = (props) => {
     });
     charAnim.setSpeed(1.5);
     groundAnim.setSpeed(5);
+    charAnim.setSubframe(false);
   }, []);
 
   return (

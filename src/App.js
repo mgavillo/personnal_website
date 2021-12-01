@@ -3,6 +3,7 @@ import Header from './Header';
 import './App.css';
 import Cv from './routes/Cv';
 import Home from "./routes/Home";
+import Portofolio from "./routes/Portofolio";
 import React, {useEffect, useState} from 'react';
 // import lottie from "lottie-web";
 // import character from "./Design/syntwave_ground.json";
@@ -18,9 +19,9 @@ function App(){
     <div className="App" >
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route id="Home" path="/" element={<Home />} />
         <Route path="CV" element={<Cv />} />
-        <Route path="Portofolio" element={""} />
+        <Route path="Portofolio" element={<Portofolio />} />
         <Route path="Gallery" element={""} />
         <Route path="Contact" element={""} />
         
