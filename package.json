@@ -3,25 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-three/drei": "^3.0.0",
+    "@react-spring/three": "^9.3.1",
+    "@react-three/drei": "^4.1.8",
     "@react-three/fiber": "^7.0.21",
+    "@react-three/postprocessing": "^2.0.5",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "corepack": "^0.10.0",
+    "css-loader": "^6.5.1",
     "history": "^5.1.0",
     "lottie-web": "^5.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.0.2",
-    "react-scripts": "^3.4.4",
-    "react-three-fiber": "^5.3.14",
-    "three": "^0.135.0",
-    "web-vitals": "^1.1.2"
+    "react-scripts": "^4.0.3",
+    "three": "^0.135.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "webpack-dev-server",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

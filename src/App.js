@@ -26,8 +26,6 @@ function App(){
         <Route path="Contact" element={""} />
         
       </Routes>
-
-      {/* <div id="character"></div> */}
     </div>
   );
 };
