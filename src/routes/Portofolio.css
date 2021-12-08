@@ -1,0 +1,59 @@
+.portofolioPage{
+    background-color: navy; 
+    width:100vw;
+    height:calc(100vh - 70px);  
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.projectContent{
+    width:30%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#carouselWrapper{
+    height:500px;
+    overflow: hidden;
+}
+
+#carousel{
+    /* position: absolute; */
+    transform: translateY(var(--dy));
+    overflow: hidden;
+    transition: transform 1s;
+}
+
+.next, .prev{
+    transform: scale(0.5);
+}
+
+.prev{
+    background-color:dodgerblue;
+}
+
+.next{
+    background-color:darkblue;
+}
+.current{
+    background-color: blue;
+}
+
+.projectImg{
+    width:400px;
+    height:250px;
+}
+
+#browseProject{
+    color:white;
+}
+
+.currentImg{
+    transform: scale(1.2);
+}
+
+.otherImg{
+    opacity:0.5;
+}

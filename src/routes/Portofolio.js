@@ -1,82 +1,73 @@
-import React, {useEffect, useRef, useState} from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-// import * as THREE from "three";
-// import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
-// import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
-// import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { EffectComposer, Outline, Noise, Bloom} from '@react-three/postprocessing'
-import { useSpring, animated } from '@react-spring/three'
-import { softShadows } from "@react-three/drei"
+import React, {useEffect, useState, useRef} from "react"
+import "./Portofolio.css"
 
-softShadows()
+const setProp = (ref, prop, value) => ref.current.style.setProperty(prop, value) 
 
+const slides = ["https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg",
+"https://images.pexels.com/photos/2835562/pexels-photo-2835562.jpeg",
+"https://images.pexels.com/photos/300857/pexels-photo-300857.jpeg",
+"https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg",
+"https://images.pexels.com/photos/2356087/pexels-photo-2356087.jpeg"];
 
-function BoxMesh({position, onHover, args, color}){
-    const ref = useRef(null);
-    const [active, setActive] = useState(false);
+const Slide = (props) => {
+    // console.log(index);
+    return(
+       <img className={props.current == props.index ? "currentImg" : "otherImg"} style={{width:"auto", height:"100px", padding:"20px 20px"}}src={slides[props.index]}></img>
+    )
+}
 
-    const { scale } = useSpring({ scale: active ? 1.5 : 1 })
-    const onPointerOver = () => {
-        onHover(ref);
-        setActive(true);
-    };
-    const onPointerOut = () => {
-        onHover(null);
-        setActive(false);
+export default function Portofolio(){
+    const [current, setCurrent] = useState(0);
+    const carousel = useRef();
+
+    useEffect(() => {
+        setProp(carousel, '--dy', `${150}px`)
+    }, [])
+    const onPreviousClick = () => {
+        console.log("length", slides.length)
+        console.log(current)
+        var prev = current === 0 ? slides.length -1 : current - 1;
+        setCurrent(prev)
+        console.log("pref", prev)
+        console.log("offset", -prev * 100)
+        setProp(carousel, '--dy', `${-prev * 140 + 150}px`)
     }
-    useFrame(() => {ref.current.rotation.x = ref.current.rotation.y += 0.01;});
+    const onNextClick = () => {
+        console.log("length", slides.length)
+        console.log(current)
+        var next = current === slides.length -1 ? 0 : current + 1;
+        setCurrent(next)
+        console.log("next", next)
+        console.log("offset", -next * 100)
+        setProp(carousel, '--dy', `${-next * 140 + 150}px`)
 
+    }
     return(
-        <animated.mesh ref={ref}
-            // onPointerOver={(e) => onHover(ref)} onPointerOut={(e) => onHover(null)}
-            onPointerOver={onPointerOver} onPointerOut={onPointerOut}
-            scale={scale} 
-            castShadow position={position} >
-            
-            <boxBufferGeometry attach='geometry' args={args}/>
-            <meshStandardMaterial attach='material' color={color} roughness={0} metalness={0.1}/>
-        </animated.mesh>
+        <div className="portofolioPage">
+            <div className="projectContent">
+                <h1>My Project</h1>
+                <h3>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</h3>
+                <a id="browseProject">Browse project</a>
+                {/* <img alt={""} src={slideData[0]}></img> */}
+
+            </div>
+            <div>
+                <div id="carouselWrapper">
+                    <ul id={"carousel"} style={{display: "flex", flexDirection:"column", zIndex:"1"}} ref={carousel}>
+                    {slides.map((slide, index) => {
+                        return(
+                            <Slide index={index} current={current}/>
+                        )
+                    })
+                    }
+                    </ul>
+                </div>
+
+                <div>
+                    <a style={{margin:"40px 20px", zIndex:"6", position:"relative"}} onClick={onPreviousClick}>Previous </a>
+                    <a style={{margin:"40px 20px", zIndex:"6", position:"relative"}} onClick={onNextClick}>Next</a>
+                </div>
+            </div>
+        </div>
     );
-};
-
-export default function Portofolio (){
-    const [hovered, onHover] = useState(null)
-    const selected = hovered ? [hovered] : undefined
-
-    return(
-
-        <Canvas shadows camera={{position:[0, 1, 10], fov:[65]}} style={{ width: window.innerWidth, height: window.innerHeight - 70}} dpr={[1, 2] }>
-            <color attach="background" args={["blue"]} />
-            {/* <fog attach="fog" args={["white", 0, 40]} /> */}
-            <pointLight position={[-10, 0, -20]} color="red" intensity={2.5} />
-            <pointLight position={[1, 10, 10]} intensity={0.5} />
-            <ambientLight intensity={0.2}/>
-            <directionalLight 
-                castShadow
-                position={[0, 10, 0]}
-                shadow-mapSize-width={1024}
-                shadow-mapSize-height={1024}
-                shadow-camera-far={50}
-                shadow-camera-right={-10}
-                shadow-camera-left={10}
-                shadow-camera-top={10}
-                shadow-camera-bottom={-10}
-            />
-            <group>
-                <mesh receiveShadow rotation={[-Math.PI /2, 0, 0]} position={[0, -3, 0]}>
-                    <planeBufferGeometry attach="geometry" args={[100, 10000, 500, 100]}/>
-                    <shadowMaterial attach="material" opacity={0.6} color={"navyBlue"}/>
-                </mesh>
-                <group>
-                    <BoxMesh position={[0, 1, 0]} onHover={onHover} args={[3, 2, 1]} color="green"/>
-                    <BoxMesh position={[-10, 1, -5]} onHover={onHover} args={[1, 1, 3]} color = "pink"/>
-                    <BoxMesh position={[10, 1, -5]} onHover={onHover} args={[3, 1, 2]} color="pink"/>
-                </group>
-            </group>
-            <EffectComposer multisampling={10} autoClear={false}>
-                <Outline blur selection={selected} visibleEdgeColor="red" edgeStrength={55} width={850}/>
-                <Noise opacity={0.04} />
-            </EffectComposer>
-        </Canvas>
-    );
-};
+}
