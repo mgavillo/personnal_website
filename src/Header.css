@@ -1,37 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 #headerWrapper{
-    color: white;
     display:flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height:70px;
+    font-family: 'VT323', monospace;
+    font-size:30px;
+}
+
+#headerWrapper[night="1"]{
+    background-color: midnightblue;
+    color:white;
+    animation-direction: normal;
+
+}
+
+#headerWrapper[night="-1"]{
+    background-color:rgb(214, 236, 243);
+    color:midnightblue;
+    animation-direction: reverse;
+
 }
 
 #headerWrapper[nightShift='1']{
+    animation-timing-function: ease-out;
     animation-duration: 1s;
     animation-name: nightShift;
-    animation-iteration-count: forwards;
+    /* animation-fill-mode: forwards; */
 }
 
-
-.aller {
-    animation-direction: normal;
-  }
-
-.retour {
-    animation-direction: reverse;
-  }
-
 @keyframes nightShift {
+
     from {
       background-color: midnightblue;
       color: white;
     }
     to{
-        background-color: lightblue;
+        background-color: rgb(214, 236, 243);;
         color: midnightblue;
     }
-  }
+}
 
 
 

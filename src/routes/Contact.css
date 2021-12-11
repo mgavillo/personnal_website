@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+
 textarea{
     resize: none;
 }
@@ -15,25 +17,29 @@ input[type="text"], textarea{
   }
 
 #ContactPage{
+    
     width: 100vw;
     height: calc(100vh - 70px);
     background:radial-gradient(circle, rgba(0,212,255,1) 0%, rgba(FF,FF,FF,1) 100%);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
 }
 
 .card {
-    width: 700px;
-    height: 400px;
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 30px;
+    width: 1000px;
+    height: 600px;
     background: linear-gradient(30deg, rgba(0,212,255,0.2) 25% , rgba(255,255,255,0.2) 32%, rgba(9,9,121,0.2) 39%, rgba(0,212,255,0.2) 100%);
     border-radius: 10px;
     border: solid 0.1em;
     border-color: mediumturquoise;
     box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
     transform: scale(1) perspective(525px);
-    transition: box-shadow 0.5s, transform 0.1s;
+    transition: box-shadow 0.5s, transform 0.1s, background-position 0.1s;
     perspective: 300px;
     display: flex;
     align-items: center;
@@ -56,10 +62,30 @@ input[type="text"], textarea{
     margin: 15px;
 }
 .largeInput{
+    font-family: 'Reenie Beanie', cursive;
+    background-color: none !important;
+    font-size: 20px;
     width: 80%;
     height:20%;
 }
 
+.input[night="1"]{
+    color: white;
+}
+
+.input[night="0"]{
+    color:navy;
+}
+
+input:focus,
+input:active {
+  border-color: transparent;
+  border-bottom: 2px solid #1c87c9;
+}
+
+input[type="text"]{
+    background-color: none !important;
+}
 .buttonWrapper{
     box-shadow: 0 0 5px #eee;
     width:110px;
@@ -83,7 +109,7 @@ input[type="text"], textarea{
     background-color: mediumturquoise;
     color:white;
     font-size: x-large;
-    background: linear-gradient(270deg, #40D297 0%, #3EC1F4 100%);    ;
+    background: linear-gradient(270deg, #40D297 0%, #3EC1F4 100%);
 
 }
 

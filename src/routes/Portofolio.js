@@ -9,14 +9,24 @@ const slides = ["https://images.pexels.com/photos/417173/pexels-photo-417173.jpe
 "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg",
 "https://images.pexels.com/photos/2356087/pexels-photo-2356087.jpeg"];
 
+const imgHeight= 400;
 const Slide = (props) => {
     // console.log(index);
     return(
-       <img className={props.current == props.index ? "currentImg" : "otherImg"} style={{width:"auto", height:"100px", padding:"20px 20px"}}src={slides[props.index]}></img>
+        <div style={{perspectiveOrigin: "150% 150%",
+            transformStyle :"preserve-3d"}}>
+        <img alt="" className={props.current === props.index ? "currentImg" : "otherImg"}
+            style={{display:"block", width:"auto", height:`${imgHeight}px`, padding:"20px 20px", 
+            perspective: "20px", transform: "scaleZ(3) translateZ(50px) rotateX(15deg) rotateY(20deg)"}}
+            src={slides[props.index]}></img>
+
+        </div>
+ 
+
     )
 }
 
-export default function Portofolio(){
+export default function Portofolio(props){
     const [current, setCurrent] = useState(0);
     const carousel = useRef();
 
@@ -30,7 +40,7 @@ export default function Portofolio(){
         setCurrent(prev)
         console.log("pref", prev)
         console.log("offset", -prev * 100)
-        setProp(carousel, '--dy', `${-prev * 140 + 150}px`)
+        setProp(carousel, '--dy', `${-prev * (imgHeight + 40) + 150}px`)
     }
     const onNextClick = () => {
         console.log("length", slides.length)
@@ -39,11 +49,11 @@ export default function Portofolio(){
         setCurrent(next)
         console.log("next", next)
         console.log("offset", -next * 100)
-        setProp(carousel, '--dy', `${-next * 140 + 150}px`)
+        setProp(carousel, '--dy', `${-next * (imgHeight + 40) + 150}px`)
 
     }
     return(
-        <div className="portofolioPage">
+        <div id="portofolioPage" class="background" night={props.night} nightShift={props.shift}>
             <div className="projectContent">
                 <h1>My Project</h1>
                 <h3>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</h3>

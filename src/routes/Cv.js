@@ -63,7 +63,7 @@ const Cv = (props) => {
       name: "character",
     });
     charAnim.setSpeed(1.5);
-    groundAnim.setSpeed(5);
+    groundAnim.setSpeed(3);
     charAnim.setSubframe(false);
   }, []);
 

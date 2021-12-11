@@ -1,12 +1,12 @@
 import React, {useState, useRef, useEffect} from "react";
 import { useSpring, animated } from 'react-spring';
 import { setQuaternionFromProperEuler } from "three/src/math/MathUtils";
+import "../App.css"
 import "./Contact.css"
-
 
 const setProp = (ref, prop, value) => ref.current.style.setProperty(prop, value) 
 
-export default function Contact(){
+export default function Contact(props){
     const [cardActive, setCardActive] = useState(false);
     const ref = useRef(null);
 
@@ -26,7 +26,7 @@ export default function Contact(){
             // console.log(XAngle,Math.sqrt(XAngle * XAngle ))
             setProp(ref, '--dx', `${XAngle}deg`)
             setProp(ref, '--dy', `${YAngle}deg`)
-            setProp(ref, '--dp', `${Math.sqrt(XAngle * XAngle )}%`)
+            setProp(ref, '--dp', `${Math.sqrt(XAngle * XAngle ) + Math.sqrt(YAngle * YAngle ) / 2}%`)
         // }
     };
 
@@ -42,7 +42,8 @@ export default function Contact(){
     }
 
     return(
-    <div id="ContactPage" >
+    <div id="ContactPage" class="background" night={props.night} nightShift={props.shift}>
+        <h1>Send me a postcard</h1>
         <div ref={ref}
             className="card"
             onMouseMove={onMouseMove}
@@ -52,12 +53,13 @@ export default function Contact(){
             <div className="cardContent">
                 <div>Hello there !<br/>I'm looking for a freelancer to help me with : </div>
                 {/* <input className="largeInput" type="text"></input> */}
-                <textarea className="largeInput" ></textarea>
+                <textarea className="largeInput input" night={props.night} ></textarea>
 
-                <div>You can reach me at <input type="text"></input></div>
-                <div>Xoxo, <input type="text"></input></div>
-                <div className="buttonWrapper"><a className="cardButton">SEND</a></div>
-                
+                <div>You can reach me at <input type="text" className="input" night={props.night}></input></div>
+                <div>Xoxo, <input type="text" className="input" night={props.night}></input></div>
+                <div className="buttonWrapper">
+                    <a className="cardButton">SEND</a>
+                </div>
             </div>
             <div className="verticalDivider" style={{backgroundColor: "mediumturquoise" , height:"80%" , width:"1px", borderRadius:"5px"}}></div>
             {/* <hr style={{backgroundColor:"mediumturquoise"}}/> */}
@@ -74,6 +76,7 @@ export default function Contact(){
 
             </div>
         </div>
+        <h2>or pm me !</h2>
     </div>
     );
 }
