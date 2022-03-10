@@ -1,0 +1,134 @@
+@import "../colors.scss";
+
+#portofolioPage{
+    width:100vw;
+    height:calc(100vh - 70px);  
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.projectContent{
+    width:350px;
+    min-width: 350px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    // break-after: always;
+}
+
+
+
+#github{
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    padding: 10px ;
+}
+
+#carouselWrapper{
+    height:800px;
+    overflow: hidden;
+    // display: flex;
+    // flex-direction: column;
+}
+
+#carousel{
+    /* position: absolute; */
+    transform: translateY(var(--dy));
+    overflow: hidden;
+    transition: transform 1s, opacity 1s;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+}
+
+#browseProject{
+    color:white;
+}
+
+.currentImg{
+    transform: scale(1.2);
+    &:hover{
+        box-shadow: 0 0 30px 4px #0038FF !important;
+        cursor: pointer;
+    }
+}
+
+.otherImg{
+    opacity:0.5;
+}
+
+.arrowContainer{
+    flex-wrap: nowrap; /* Valeur par défaut */
+
+    width: 150px;
+    height: auto;
+    margin: 0 auto;
+    padding: 0px;
+    margin:0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow{
+    width: 35px;
+    &:hover{
+        cursor: pointer;
+        box-shadow: 2px 4px 4px 0px var(--basePink);
+    }
+}
+
+.bigArrow{
+    width:100px;
+    display: none;
+    position: absolute;
+    // padding: 20px;
+   
+    // margin: 0 -50% 0 0;
+}
+
+.arrow:hover + .bigArrow {
+    display: block;
+}
+
+.arrowDown{
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+}
+
+@media (max-width: 1100px){
+    .projectContent{
+        width: 80vw;
+    }
+
+    #carouselWrapper{
+        height:500px;
+    }
+    #carousel{
+        transform: translateX(var(--dx));
+        // list-style-type: none;
+        // width: 1400px;
+        list-style-type: disc;
+        float: right;
+        height:500px !important;
+        padding: 0;
+        margin: 0;
+        flex-direction: row;
+
+    }
+
+    #carouselNav{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #arrowsWrapper{
+        transform: rotate(-90deg);
+    }
+}

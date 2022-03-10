@@ -1,8 +1,8 @@
 import React, {useState, useRef, useEffect} from "react";
-import { useSpring, animated } from 'react-spring';
-import { setQuaternionFromProperEuler } from "three/src/math/MathUtils";
-import "../App.css"
-import "./Contact.css"
+// import { useSpring, animated } from 'react-spring';
+// import { setQuaternionFromProperEuler } from "three/src/math/MathUtils";
+import "../App.scss"
+import "./Contact.scss"
 
 const setProp = (ref, prop, value) => ref.current.style.setProperty(prop, value) 
 

@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import Header from './Header';
-import './App.css';
+import './App.scss';
 import Cv from './routes/Cv';
 import Home from "./routes/Home";
 import Portofolio from "./routes/Portofolio";

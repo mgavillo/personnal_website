@@ -2,6 +2,8 @@
   "name": "personnal_website",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000",
+  "homepage": ".",
   "dependencies": {
     "@react-spring/three": "^9.3.1",
     "@react-three/drei": "^4.1.8",
@@ -19,6 +21,7 @@
     "react-router-dom": "^6.0.2",
     "react-scripts": "^4.0.3",
     "react-spring": "^9.3.2",
+    "sass": "^1.49.9",
     "three": "^0.135.0"
   },
   "scripts": {

@@ -1,11 +1,10 @@
 import React, {useEffect, useRef} from "react";
-import { Canvas, useFrame } from "react-three-fiber";
 import * as THREE from "three";
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
-import { BloomPass } from 'three/examples/jsm/postprocessing/BloomPass.js';
-import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js';
-import '../App.css';
+// import { BloomPass } from 'three/examples/jsm/postprocessing/BloomPass.js';
+// import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js';
+import '../App.scss';
 
 const Home = () => {
     const canvas3d= useRef(null);
