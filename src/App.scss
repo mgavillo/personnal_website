@@ -8,20 +8,6 @@ a {
   text-decoration: inherit; /* no underline */
 }
 
-/* a:hover[night="1"]{
-  transition: color 0.2s;
-  color: var(--baseGreen);
-  cursor: pointer;
-  text-shadow: 1px 4px 4px var(--basePink) ;
-}
-
-a:hover[night="-1"]{
-  transition: color 0.2s;
-  color: var(--basePink);
-  cursor: pointer;
-  text-shadow: 1px 4px 4px var(--baseGreen) ;
-} */
-
 .App {
   text-align: center;
   padding: 0;
@@ -46,36 +32,89 @@ a:hover[night="-1"]{
   }
 }
 
-.background[night="1"]{
+
+
+.darkSvg2 path{
+  stroke: white;
+}
+
+.lightSvg2 path{
+  stroke: var(--bgDark);
+}
+
+.shiftingSvg2 path{
+animation-timing-function: ease-out;
+animation-duration: 1s;
+animation-name: svgNightShift2;
+}
+
+@keyframes svgNightShift2 {
+from {
+  stroke: white;
+}
+to{
+    stroke: var(--bgDark);
+}
+}
+
+.darkSvg path{
+    fill: white;
+}
+
+.lightSvg path{
+    fill: var(--bgDark);
+}
+
+.shiftingSvg path{
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
+  animation-name: svgNightShift;
+}
+
+@keyframes svgNightShift {
+  from {
+    fill: white;
+  }
+  to{
+      fill: var(--bgDark);
+  }
+}
+
+.dark2{
+  &:root{
+    background-color: var(--bgDark) ;
+  }
   background-color: var(--bgDark);
   color:white;
+  border-color: white;
   animation-direction: normal;
 
 }
 
-.background[night="-1"]{
+.light2{
   background-color:white;
   color:var(--bgDark);
+  border-color: var(--bgDark);
   animation-direction: reverse;
-
 }
 
-.background[nightShift='1']{
-  animation-timing-function: ease-in;
+.shifting2{
+  animation-timing-function: ease-out;
   animation-duration: 1s;
-  animation-name: backgroundShift;
+  animation-name: nightShift2;
   /* animation-fill-mode: forwards; */
 }
 
-@keyframes backgroundShift {
-
+@keyframes nightShift2 {
   from {
-    --bg: var(--bgDark);
+    background-color: var(--bgDark);
     color: white;
+    border-color: white;
   }
   to{
-      --bg: white;
+      background-color : white;
       color: var(--bgDark);
+      border-color: var(--bgDark);
   }
 }
 

@@ -25,7 +25,7 @@
 #github{
     border-style: solid;
     border-width: 2px;
-    border-color: white;
+    // border-color: white;
     padding: 10px ;
 }
 
@@ -77,15 +77,18 @@
 }
 
 .arrow{
+    margin:40px 20px;
+    z-index: 6;
+    position: relative;
     width: 35px;
     &:hover{
         cursor: pointer;
-        box-shadow: 2px 4px 4px 0px var(--basePink);
+        filter: drop-shadow(2px 4px 0px var(--basePink));
     }
 }
 
 .bigArrow{
-    width:100px;
+    width:100px !important;
     display: none;
     position: absolute;
     // padding: 20px;
@@ -109,6 +112,7 @@
 
     #carouselWrapper{
         height:500px;
+        width: 800px;
     }
     #carousel{
         transform: translateX(var(--dx));
@@ -116,8 +120,7 @@
         // width: 1400px;
         list-style-type: disc;
         float: right;
-        height:500px !important;
-        padding: 0;
+        padding: 10;
         margin: 0;
         flex-direction: row;
 

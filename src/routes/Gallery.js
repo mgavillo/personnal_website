@@ -39,9 +39,10 @@ const Photo = (props) => {
 export default function Gallery(props){
     console.log(data.length)
     const [focus, setFocus] = useState(false);
+    const switchClass = `${props.night === 1 ? "dark2" : "light2"} ${props.shift == 1 ? "shifting2" : ""}`
 
     return(
-        <div id="galleryPage" class="background" night={props.night} nightShift={props.shift}>
+        <div id="galleryPage" class={switchClass} night={props.night} nightShift={props.shift}>
             <div id="catWrapper" class="horizontalFlex">
                 <div class="cat">Data viz</div>
                 <div class="cat">Illustration</div>

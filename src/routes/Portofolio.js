@@ -1,7 +1,12 @@
 import React, {useEffect, useState, useRef} from "react"
 import "./Portofolio.scss"
 import "../flex.scss"
-const setProp = (ref, prop, value) => ref.current.style.setProperty(prop, value) 
+// import {ReactCommponent as Arrow} from '../Design/arrow.svg';
+
+const Arrow = <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 14H0L10 0L20 14H14L10 9L6 14Z" fill="white"/>
+            </svg>
+const setProp = (ref, prop, value) => ref.current.style.setProperty(prop, value);
 
 const slides = ["https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg",
 "https://images.pexels.com/photos/2835562/pexels-photo-2835562.jpeg",
@@ -30,29 +35,32 @@ export default function Portofolio(props){
     const [current, setCurrent] = useState(0);
     const carousel = useRef();
 
+    const switchClass = `${props.night === 1 ? "dark2" : "light2"} ${props.shift == 1 ? "shifting2" : ""}`
+    const switchSvg = `${props.night === 1 ? "darkSvg" : "lightSvg"} ${props.shift == 1 ? "shiftingSvg" : ""}`
+    const switchSvg2 = `${props.night === 1 ? "darkSvg2" : "lightSvg2"} ${props.shift == 1 ? "shiftingSvg2" : ""}`
     useEffect(() => {
         setProp(carousel, '--dy', `150px`)
-        setProp(carousel, '--dx', `1250px`);
+        setProp(carousel, '--dx', `2430px`);
     }, [])
     const onPreviousClick = () => {
         var prev = current === 0 ? slides.length -1 : current - 1;
         setCurrent(prev)
         setProp(carousel, '--dy', `${-prev * (imgHeight + 40) + 150}px`)
-        setProp(carousel, '--dx', `${-prev * (imgWidth + 40) + 1400}px`)
+        setProp(carousel, '--dx', `${-prev * (imgWidth + 40) + 2430}px`)
 
     }
     const onNextClick = () => {
         var next = current === slides.length -1 ? 0 : current + 1;
         setCurrent(next)
         setProp(carousel, '--dy', `${-next * (imgHeight + 40) + 150}px`)
-        setProp(carousel, '--dx', `${-next * (imgWidth + 40) + 1250}px`)
+        setProp(carousel, '--dx', `${-next * (imgWidth + 40) + 2430}px`)
 
     }
     return(
-        <div id="portofolioPage" className="background" night={props.night} nightshift={props.shift}>
+        <div id="portofolioPage" className={`background ${switchClass}`}>
             <div className="projectContent">
                 <h1>My Project</h1>
-                <a id="github"href="https://www.google.com">Github</a>
+                <a id="github"href="https://www.google.com" className={switchClass}>Github</a>
                 <h3>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</h3>
                 {/* <a id="browseProject">Browse project</a> */}
                 {/* <img alt={""} src={slideData[0]}></img> */}
@@ -71,12 +79,20 @@ export default function Portofolio(props){
                 </div>
                 <div id="arrowsWrapper" className="verticalFlex">
                     <div className="arrowContainer">
-                        <img className="arrow" src={require('../Design/arrow.svg').default} style={{margin:"40px 20px", zIndex:"6", position:"relative"}} onClick={onPreviousClick}/>
-                        <img className="bigArrow" src={require('../Design/bigArrow.svg').default}/>
+                        <svg className={`arrow ${switchSvg}`} onClick={onPreviousClick} width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 14H0L10 0L20 14H14L10 9L6 14Z" fill="white"/>
+                        </svg>
+                        <svg className={`bigArrow ${switchSvg2}`} width="60" height="46" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 22H3H1L15 1L29 22H17L15 19L13 22Z" stroke="white"/>
+                        </svg>
                     </div>
                     <div className="arrowContainer">
-                        <img className="arrow arrowDown" src={require('../Design/arrow.svg').default} style={{margin:"40px 20px", zIndex:"6", position:"relative"}} onClick={onNextClick}/>
-                        <img className="bigArrow arrowDown" src={require('../Design/bigArrow.svg').default}/>
+                        <svg className={`arrow arrowDown ${switchSvg}`} onClick={onNextClick} width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 14H0L10 0L20 14H14L10 9L6 14Z" fill="white"/>
+                        </svg>
+                        <svg className={`bigArrow arrowDown ${switchSvg2}`} width="60" height="46" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 22H3H1L15 1L29 22H17L15 19L13 22Z" stroke="white"/>
+                        </svg>
                     </div>
                 </div>
             </div>
